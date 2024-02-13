@@ -1,0 +1,4 @@
+symfony server:start -d
+symfony open:local
+
+symfony server:stop
