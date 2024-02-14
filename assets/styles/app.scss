@@ -1,4 +1,20 @@
 body {
-  background-color: rgb(207, 207, 207);
-  display: flex;
+  font-family: Roboto Regular;
+  margin: 0;
+}
+
+header {
+  font-family: Montserrat Bold;
+}
+
+nav {
+  background-color: #3498db;
+}
+
+h1 {
+  font-size: 36px;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
