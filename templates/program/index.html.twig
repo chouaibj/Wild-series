@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %} {% block title %}{{ title }}{% endblock %} {%
 block body %}
-<h1>{{ title }}</h1>
-{% endblock %} {% block content %}
-<nav aria-label="Page navigation example">
-  {{ knp_pagination_render(pagination) }}
-</nav>
+<h1>Toutes les séries de la table program :</h1>
+{% for program in programs %}
+<div>
+    <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+    <p>{{ program.synopsis }}</p>
+    {# Lien vers la fiche de la série : #}
+    <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+</div>
+{% else %} Aucune série trouvée. {% endfor %}
+
+<a href="{{ path('homepage') }}"> Retour à l'accueil </a>
 {% endblock %}

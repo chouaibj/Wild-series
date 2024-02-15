@@ -10,3 +10,12 @@ program_show:
   methods: ["GET"]
   requirements:
     id: '\d+'
+
+program_category:
+  path: "/program/category/{id}"
+  controller: 'App\Controller\ProgramController::category'
+  methods: ["GET"]
+# category:
+#   resource: ../src/Controller/CategoryController.php
+#   prefix: /category
+#   type: annotation
