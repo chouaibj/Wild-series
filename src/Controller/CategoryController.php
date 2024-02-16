@@ -28,20 +28,17 @@ class CategoryController extends AbstractController
         return $this->render('Category/index.html.twig', [
             'categories' => $categories,
         ]);
-    }    
+    } 
 
     #[Route('/{categoryName}', name: 'show')]
     public function show(string $categoryName): Response
     {
-        // Retrieve the Category entity based on the provided name
         $category = $this->entityManager->getRepository(Category::class)->findOneBy(['name' => $categoryName]);
 
-        // Check if the category exists
         if (!$category) {
             throw $this->createNotFoundException("Aucune catégorie nommée $categoryName");
         }
 
-        // Retrieve the latest 3 programs for the given category
         $programs = $this->entityManager->getRepository(Program::class)->findBy(
             ['category' => $category],
             ['id' => 'DESC'],

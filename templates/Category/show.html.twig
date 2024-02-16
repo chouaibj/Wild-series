@@ -2,7 +2,7 @@
 %} {% block body %}
 <h1>{{ category.name }}</h1>
 {% if programs|length > 0 %}
-<h2>Programmes :</h2>
+<h2>Series :</h2>
 <ul>
   {% for program in programs %}
   <li>
@@ -13,4 +13,6 @@
 </ul>
 {% else %}
 <p>Aucune série trouvée.</p>
-{% endif %} {% endblock %}
+{% endif %}
+<a href="{{ path('homepage') }}"> Retour à l'accueil </a>
+{% endblock %}

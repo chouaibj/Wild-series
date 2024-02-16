@@ -20,6 +20,4 @@ class ProgramRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Program::class);
     }
-
-    
 }
