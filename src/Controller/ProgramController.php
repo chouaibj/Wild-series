@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
-use App\Entity\Program;
-use App\Repository\CategoryRepository;
 use App\Repository\ProgramRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

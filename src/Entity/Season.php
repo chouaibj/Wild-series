@@ -15,15 +15,18 @@ class Season
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    #[ORM\Column]
+    private ?int $number = null;
+
+    #[ORM\OneToMany(targetEntity: Episode::class, mappedBy: 'season', orphanRemoval: true)]
+    private Collection $episodes;
 
     #[ORM\ManyToOne(inversedBy: 'seasons')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Program $program = null;
 
-    #[ORM\OneToMany(targetEntity: Episode::class, mappedBy: 'season', orphanRemoval: true)]
-    private Collection $episodes;
+    #[ORM\Column(length: 255)]
+    private ?string $year = null;
 
     public function __construct()
     {
@@ -35,26 +38,14 @@ class Season
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getNumber(): ?int
     {
-        return $this->title;
+        return $this->number;
     }
 
-    public function setTitle(string $title): static
+    public function setNumber(int $number): static
     {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getProgram(): ?Program
-    {
-        return $this->program;
-    }
-
-    public function setProgram(?Program $program): static
-    {
-        $this->program = $program;
+        $this->number = $number;
 
         return $this;
     }
@@ -85,6 +76,30 @@ class Season
                 $episode->setSeason(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProgram(): ?Program
+    {
+        return $this->program;
+    }
+
+    public function setProgram(?Program $program): static
+    {
+        $this->program = $program;
+
+        return $this;
+    }
+
+    public function getYear(): ?string
+    {
+        return $this->year;
+    }
+
+    public function setYear(string $year): static
+    {
+        $this->year = $year;
 
         return $this;
     }

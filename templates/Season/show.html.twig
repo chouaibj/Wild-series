@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %} {% block title %} {{ program.title }} - Saison
+{{ season.number }}
+{% endblock %} {% block body %}
+<div class="media">
+  <img
+    class="align-self-start mr-3"
+    src="{{ program.poster }}"
+    alt="{{ program.title }} poster"
+  />
+  <div class="media-body">
+    <h1 class="mt-0">{{ program.title }} - Saison {{ season.number }}</h1>
+    <p>{{ program.synopsis }}</p>
+    <p>Catégorie : {{ program.category.name }}</p>
+
+    <h2>Épisodes :</h2>
+    {% if episodes|length > 0 %}
+    <ul>
+      {% for episode in episodes %}
+      <li>{{ episode.title }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Aucun épisode disponible pour cette saison.</p>
+    {% endif %}
+  </div>
+</div>
+
+<a href="{{ path('category_index') }}"> Retour à la liste des catégories</a>
+{% endblock %}

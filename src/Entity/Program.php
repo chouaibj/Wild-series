@@ -22,15 +22,15 @@ class Program
     #[ORM\Column(type: Types::TEXT)]
     private ?string $synopsis = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $poster = null;
+    #[ORM\OneToMany(targetEntity: Season::class, mappedBy: 'program', orphanRemoval: true)]
+    private Collection $seasons;
 
     #[ORM\ManyToOne(inversedBy: 'programs')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-    #[ORM\OneToMany(targetEntity: Season::class, mappedBy: 'program', orphanRemoval: true)]
-    private Collection $seasons;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $poster = null;
 
     public function __construct()
     {
@@ -66,30 +66,6 @@ class Program
         return $this;
     }
 
-    public function getPoster(): ?string
-    {
-        return $this->poster;
-    }
-
-    public function setPoster(?string $poster): static
-    {
-        $this->poster = $poster;
-
-        return $this;
-    }
-
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): static
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Season>
      */
@@ -116,6 +92,30 @@ class Program
                 $season->setProgram(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getPoster(): ?string
+    {
+        return $this->poster;
+    }
+
+    public function setPoster(?string $poster): static
+    {
+        $this->poster = $poster;
 
         return $this;
     }

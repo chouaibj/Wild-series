@@ -22,3 +22,10 @@ controllers:
 #   resource: ../src/Controller/CategoryController.php
 #   prefix: /category
 #   type: annotation
+
+# config/routes.yaml
+season_show:
+  path: "/season/{id}"
+  controller: 'App\Controller\SeasonController::show'
+  requirements:
+    id: \d+
