@@ -33,6 +33,6 @@ class ProgramController extends AbstractController
         return $this->render('Program/show.html.twig', [
             'program' => $program,
         ]);
-    }    
+    }
 
 }

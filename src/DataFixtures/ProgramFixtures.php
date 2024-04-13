@@ -9,7 +9,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $programs = [
             ["title" => "The Walking Dead", "synopsis" => "Des zombies envahissent la terre", "categoryReference" => "category_Action"],
